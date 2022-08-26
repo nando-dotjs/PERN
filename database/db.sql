@@ -1,0 +1,5 @@
+CREATE TABLE users(
+    id SERIAL PRIMARY KEY,
+    mail VARCHAR(255) UNIQUE,
+    pass VARCHAR(255)
+)

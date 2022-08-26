@@ -1,0 +1,34 @@
+version: '3.5'
+
+services:
+  postgres:
+    container_name: postgres_container
+    image: postgres
+    environment:
+      DATABASE_HOST: 127.0.0.1
+      POSTGRES_USER: utec
+      POSTGRES_PASSWORD: utec
+      POSTGRES_DB: utecdb
+      PGDATA: /data/postgres
+    volumes:
+       - postgres:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: always
+  
+  pgadmin:
+    container_name: pgadmin_container
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: "admin@admin.com"
+      PGADMIN_DEFAULT_PASSWORD: "admin"
+    volumes:
+       - pgadmin:/var/lib/pgadmin
+    ports:
+      - "80:80"
+    depends_on:
+      - postgres
+
+volumes:
+    postgres:
+    pgadmin:

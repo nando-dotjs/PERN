@@ -1,4 +1,6 @@
 const { Router } = require('express');
+const router = Router();
+
 const { 
     getAllUsers, 
     getUser, 
@@ -7,7 +9,6 @@ const {
     updateUser
 } = require('../controllers/users.controllers')
 
-const router = Router();
 
 router.get('/users', getAllUsers);
 
